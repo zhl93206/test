@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from selenium import  webdriver;
-from selenium.webdriver.support.select import  Select;
-import time;
+from selenium import webdriver
+from selenium.webdriver.support.select import Select
+import time
 
 
 class DriverManager:
-    __driver = 0;
+    __driver = 0
 
     def __init__(self,type):
         if "ie"==type:
@@ -36,8 +36,8 @@ class DriverManager:
 
     #向指定id或者name或者xpath的元素内输入内容
     def send_value(self,id="",name="",xpath="",value=""):
-        element = self.find_element(id,name,xpath);
-        element.send_keys(value);
+        element = self.find_element(id,name,xpath)
+        element.send_keys(value)
 
     #点击指定的元素
     def click_element(self,id="",name="",xpath=""):

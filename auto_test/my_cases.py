@@ -5,7 +5,7 @@ import unittest
 
 
 class MyCases(unittest.TestCase):
-    em = 0
+    em = None
 
     @classmethod
     def setUpClass(cls):
@@ -22,7 +22,22 @@ class MyCases(unittest.TestCase):
         self.em.goto_index()
 
     def test01_crm_login(self):
+        text = None
+        text = self.em.login_blank()
+        # self.assertEqual("- 用户名不能为空!\n- 密码不能为空!\n", msg=text)
+        self.assertEqual(text,"- 用户名不能为空!\n- 密码不能为空!\n")
+
+        text = self.em.login_blank_password()
+        # print(text)
+        self.assertEqual(text, "- 密码不能为空!\n")
+
+        text = self.em.login_blank_username()
+        self.assertEqual(text, "- 用户名不能为空!\n")
+
+        text = self.em.login_wrong_user()
+        self.assertEqual(text, "用户或密码错误！请重新输入！")
+
         self.em.login()
 
-    def test01_crm_emInfo(self):
-        self.em.emp_info()
+    # def test01_crm_emInfo(self):
+    #     self.em.emp_info()
